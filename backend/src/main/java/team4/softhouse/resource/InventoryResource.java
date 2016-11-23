@@ -3,6 +3,7 @@ package team4.softhouse.resource;
 import team4.softhouse.db.entity.Inventory;
 import team4.softhouse.process.InventoryProcess;
 
+import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -26,6 +27,7 @@ public class InventoryResource {
         this.inventoryProcess = checkNotNull(inventoryProcess);
     }
 
+    @PermitAll
     @GET
     public List<Inventory> listInventory(@QueryParam("type") String type) {
         System.out.println(type);
@@ -33,23 +35,17 @@ public class InventoryResource {
         {
             return this.inventoryProcess.list();
         }
-
         return this.inventoryProcess.findType(type);
     }
-/*
-    @GET
-    @Path("/category/{type}")
-    public List<Inventory> getInventory(@PathParam("type") String type) {
-        return this.inventoryDAO.findByType(type);//
-    }
+
 
     @GET
-    @Path("/category/")
-    public List<Inventory> getInventoryx(@QueryParam("type") String type) {
-        System.out.println(type);
-        return this.inventoryDAO.findByType(type);
+    @Path("/category")
+    public List<Inventory> listCategory() {
+        return this.inventoryProcess.listCategory();
+
     }
-*/
+
     @GET
     @Path("/{id}")
     public Inventory getNote(@PathParam("id") Integer id) throws javassist.NotFoundException {

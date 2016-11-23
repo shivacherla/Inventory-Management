@@ -1,11 +1,15 @@
-function InfoController(productService, $log) {
+function InfoController(manageService, $log) {
+
     var vm = this;
 
     vm.$onInit = $onInit;
+    vm.onSubmit=submittedorder;
     vm.refreshProducts = refreshProducts;
     vm.hasProducts = hasProducts;
     vm.addFilter = addFilter;
     vm.hasFilter = hasFilter;
+    vm.listCategory = listCategory;
+    vm.alert = alert;
 
     function hasFilter() {
         return vm.filter.length > 0;
@@ -15,7 +19,21 @@ function InfoController(productService, $log) {
         vm.products = [];
         vm.filter = "";
         vm.refreshProducts();
+        vm.listCategory();
     }
+    function onUserDidSubmit(name, category, specifications) {
+        return manageService.create(name, category, specifications)
+            .then(vm.productsController.refreshProducts)
+            .then(onUserDidReset)
+            .catch(vm.showError);
+    }
+
+   function submittedorder(product){
+       return manageService.order(product)
+           .then(vm.alert);
+
+   }
+
 
     function addFilter(filter) {
         vm.filter = filter;
@@ -24,14 +42,15 @@ function InfoController(productService, $log) {
     }
 
     function refreshProducts() {
-        var promise = productService.list();
+        var promise = manageService.list();
 
         if (vm.hasFilter()) {
-            promise = productService.filter(vm.filter);
+            promise = manageService.filter(vm.filter);
         }
 
         return promise .then(function refreshedProducts(response) {
             vm.products = response.data;
+            //console.log(vm.products);
             $log.debug(vm);
         });
     }
@@ -39,4 +58,18 @@ function InfoController(productService, $log) {
     function hasProducts() {
         return vm.products.length > 0;
     }
+
+    function listCategory(){
+        return manageService.listCategories()
+            .then(function listCat(response){
+                vm.Cat = response.data;
+                console.log(vm.Cat)
+        });
+
+    }
+
+    function alert(){
+        window.alert("Order Placed")
+    }
+    
 }

@@ -1,4 +1,4 @@
-function LoginController (loginService, $log) {
+function LoginController (loginService, $location) {
     var vm = this;
     vm.$onInit = $onInit;
     vm.onSubmit = onUserDidSubmit;
@@ -12,20 +12,38 @@ function LoginController (loginService, $log) {
         vm.password = parentControllerHasSetData ? vm.data.password : '';
     }
 
-    function onUserDidsubmit(username, password) {
+    function onUserDidSubmit(username, password) {
 
-        var test = function (response) {
+        var test= function (response) {
 
-            if (response.success) {
-                loginService.SetCredentials($scope.username, $scope.password);
-                $log.path('/home');
+            if (response.status == 200) {
+                loginService.SetCredentials(username, password, response.data.id);
+                $location.path('/home');
             } else {
 
                 vm.showError();
                 vm.onReset();
 
-
             }
         }
+
+            return loginService.verify(username, password)
+                .then(test)
+                .catch(test);
+    }
+
+    function onUserDidReset(){
+        vm.username='';
+        vm.password='';
+        //vm.$setPristine();
+        //vm.$setUntouched();
+    }
+
+    function showSuccess() {
+        alert("Success");
+    }
+
+    function showError() {
+        alert("fail");
     }
 }
