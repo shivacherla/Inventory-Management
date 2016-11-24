@@ -18,15 +18,15 @@
                     </thead>
 
                     <tbody>
-                    <tr ng-repeat="order in vm.orders" >
+                    <tr ng-repeat="order in vm.orders" ng-if="order.status==0" >
                         <td>{{order.userid}}</td>
                         <td>{{order.username}}</td>
                         <td>{{order.productid}}</td>
                         <td>{{order.name}}</td>
                         <td>{{order.specifications}}</td>
                         <td>{{order.category}}</td>
-                        <td> <button type="submit" class="btn btn-xs btn-success" ng-click="vm.acceptOrder(order.orderid)">Accept Order</button> </td>
-                        <td> <button type="submit" class="btn btn-xs btn-danger" ng-click="vm.rejectOrder(order.orderid)">Reject Order</button> </td>
+                        <td> <button type="submit" class="btn btn-xs btn-success" ng-click="vm.acceptOrder(order.orderid,order.productid)">Accept Order</button> </td>
+                        <td> <button type="submit" class="btn btn-xs btn-danger" ng-click="vm.rejectOrder(order.orderid,order.productid)">Reject Order</button> </td>
                     </tr>
                     </tbody>
 
@@ -52,7 +52,7 @@
 
     <h2 class="text-center">Products Added to Inventory</h2>
     <div class="row">
-        <product class="col-xs-6" ng-repeat="product in vm.products" data="product"></product>
+        <product class="col-xs-4" ng-repeat="product in vm.products" data="product"></product>
     </div>
 
 
