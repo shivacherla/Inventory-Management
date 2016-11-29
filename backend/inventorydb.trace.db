@@ -565,3 +565,21 @@ org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
 2016-11-23 18:30:01 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLException: Table "ORDERS" not found; SQL statement:
 drop table ORDERS [42102-192]
+2016-11-27 19:39:03 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "NAME VARCHAR(12)": "'SANDISK EXTREME USB 3.0 FLASH DRIVE' (35)"; SQL statement:
+/* InventoryDAO.create */ INSERT INTO `inventory` VALUES(?, ?, ?, ?, ?) [22001-192]
+2016-11-27 19:42:15 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "NAME VARCHAR(12)": "'Seatgate External Hard Disk' (27)"; SQL statement:
+/* InventoryDAO.create */ INSERT INTO `inventory` VALUES(?, ?, ?, ?, ?) [22001-192]
+2016-11-27 19:43:58 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "NAME VARCHAR(12)": "'Seagate External Hard Disk' (26)"; SQL statement:
+/* InventoryDAO.create */ INSERT INTO `inventory` VALUES(?, ?, ?, ?, ?) [22001-192]
+2016-11-27 19:44:44 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "NAME VARCHAR(12)": "'Sandisk External' (16)"; SQL statement:
+/* InventoryDAO.create */ INSERT INTO `inventory` VALUES(?, ?, ?, ?, ?) [22001-192]
+2016-11-28 13:11:18 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGIN" not found; SQL statement:
+drop table LOGIN [42102-192]
+2016-11-28 13:11:33 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGIN" not found; SQL statement:
+/* LoginDAO.findUserByUsername */ SELECT * FROM login WHERE username= ? AND password = ? [42102-192]
