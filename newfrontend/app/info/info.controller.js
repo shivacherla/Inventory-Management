@@ -24,8 +24,10 @@ function InfoController(manageService, $log) {
 
    function submittedorder(product){
        var status=0;
-       return manageService.order(product,status)
-           .then(vm.alert);
+       return manageService.order(product,status).then(function error(response){
+           var errorstatus=response.status;
+           if(errorstatus!=500){vm.alert();}
+       });
    }
 
 
@@ -65,5 +67,15 @@ function InfoController(manageService, $log) {
     function alert(){
         window.alert("Order Placed")
     }
-    
+
+
+    // return{responseError: function (res) {
+    //     console.log(res);
+    //     if(res.status === 500){window.alert("you have requested more than once")}
+    //     else if(res.status=== 401 || res.status ===403 ){$location.path('/')}
+    //     return res;
+    // }}
+
+
+
 }

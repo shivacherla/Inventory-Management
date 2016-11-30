@@ -6,9 +6,9 @@ body, html {
     color: #777;
 }
 
-.bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4 {
+.bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5, .bgimg-9 {
     position: relative;
-    opacity: 0.65;
+    opacity: 5;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -27,11 +27,21 @@ body, html {
 
 .bgimg-3 {
     background-image: url("../app/Img/software_development.jpg");
-    min-height: 400px;}
+    min-height: 400px;
+}
     
-    .bgimg-4 {
+.bgimg-4 {
     background-image: url("../app/Img/contact us.jpg");
-        min-height: 400px;
+        min-height: 550px;
+}
+.bgimg-5{
+    background-image: url("../app/Img/orderlog.png");
+    min-height: 900px;
+    opacity: 5;
+}
+.bgimg-9 {
+    background-image: url("../app/Img/Inventory.png");
+    min-height: 100%;
 }
 
 .caption {
@@ -57,4 +67,18 @@ h3 {
     font: 20px "Lato", sans-serif;
     color: #111;
 }
-
+.fa-check-circle:before {
+    content: "\f058";
+    color: green;
+}
+.fa-times:before {
+    content: "\f05c";
+    color: red;}
+.fa-spinner:before {
+    content: "\f110";
+    color: black;
+}
+.fa-cart-plus:before {
+    content: "\f217";
+    color: gold;
+}

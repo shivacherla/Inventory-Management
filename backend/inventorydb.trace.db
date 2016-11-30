@@ -583,3 +583,12 @@ drop table LOGIN [42102-192]
 2016-11-28 13:11:33 jdbc[12]: exception
 org.h2.jdbc.JdbcSQLException: Table "LOGIN" not found; SQL statement:
 /* LoginDAO.findUserByUsername */ SELECT * FROM login WHERE username= ? AND password = ? [42102-192]
+2016-11-30 10:50:03 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "NAME VARCHAR(12)": "'dfbcvfgdfgfdgfdgfdgfdgdfgfdgfdbrtgregregrgrgrgrgrgrgrgrrggr' (59)"; SQL statement:
+/* InventoryDAO.create */ INSERT INTO `inventory` VALUES(?, ?, ?, ?, ?) [22001-192]
+2016-11-30 11:07:06 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "NAME VARCHAR(12)": "'cgjnhvjkjkhjghjghjgfjgjhj' (25)"; SQL statement:
+/* InventoryDAO.create */ INSERT INTO `inventory` VALUES(?, ?, ?, ?, ?) [22001-192]
+2016-11-30 11:12:03 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "NAME VARCHAR(12)": "'kjhgfdfzdxcgvhbjkjlkjbvb' (24)"; SQL statement:
+/* InventoryDAO.create */ INSERT INTO `inventory` VALUES(?, ?, ?, ?, ?) [22001-192]
